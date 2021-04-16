@@ -1,0 +1,266 @@
+.home {
+    position: relative;
+    padding: 48px 85px;
+    min-height: 100vh;
+    background-image: linear-gradient(to right, #ffedf7, #ffedf7 830px, $blue 0);
+    @at-root {
+        .wrapper.break .home {
+            background-image: linear-gradient(to right, #e5f3ff, #e5f3ff 830px, $blue 0);
+        }
+    }
+    .left {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-height: calc(100vh - 96px);
+        width: 445px;
+    }
+    .todoList {
+        margin-top: auto;
+        margin-bottom: 9px;
+        li {
+            &.active {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                padding-bottom: 206px;
+                width: 100%;
+                transform: translateY(-50%);
+                label {
+                    position: absolute;
+                    bottom: 100%;
+                    font-size: 24px;
+                    & > div {
+                        margin-right: 8px;
+                        width: 48px;
+                        height: 48px;
+                    }
+                }
+                input[type=checkbox] {
+                    vertical-align: text-top;
+                }
+                .check {
+                    font-size: 36px;
+                }
+            }
+            &.inactive {
+                display: flex;
+                height: 40px;
+                border-bottom: 1px solid rgba($blue, .2);
+                align-items: center;
+                label > div {
+                    margin-right: 4px;
+                }
+                .play {
+                    display: block;
+                }
+            }
+        }
+        label {
+            margin-left: 16px;
+            color: $blue;
+            font-weight: bold;
+            font-size: 16px;
+            & > div {
+                position: relative;
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+            }
+        }
+        input[type=checkbox] {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid $blue;
+            border-radius: 50%;
+            vertical-align: middle;
+            appearance: none;
+            // &:checked + .check {
+            //     display: block;
+            // }
+            &:focus {
+                outline: none;
+            }
+        }
+        .check {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: none;
+            font-size: 16px;
+            transform: translate(-50%, -50%);
+        }
+        .play {
+            display: none;
+            margin-left: auto;
+            color: $blue;
+        }
+    }
+    .more {
+        margin-left: auto;
+        a {
+            color: $pink;
+            font-weight: bold;
+            font-size: 16px;
+            @at-root {
+                .wrapper.break .home .more a {
+                    color: $break;
+                }
+            }
+        }
+    }
+    .clock {
+        position: absolute;
+        top: 50%;
+        left: 830px;
+        display: flex;
+        width: 540px;
+        height: 540px;
+        border: 4px solid $pink;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        justify-content: center;
+        align-items: center;
+        @at-root {
+            .wrapper.break .home .clock {
+                border-color: $break;
+            }
+        }
+        &::before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 95%;
+            height: 95%;
+            border-radius: 50%;
+            background-color: $pink;
+            content: '';
+            transform: translate(-50%, -50%);
+            @at-root {
+                .home .clock.pause::before {
+                    border: 4px solid #ff4384;
+                    background-color: #fff;
+                }
+                .wrapper.break .home .clock::before {
+                    background-color: $break;
+                }
+                .wrapper.break .home .clock.pause::before {
+                    border: 4px solid $break;
+                    background-color: #fff;
+                }
+            }
+        }
+        &-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background-color: #fff;
+            transform: translate(-50%, -50%);
+            @at-root {
+                .home .clock.pause .clock-btn {
+                    background-color: $pink;
+                }
+                .wrapper.break .home .clock.pause .clock-btn {
+                    background-color: $break;
+                }
+            }
+            &::before {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                border-width: 20px 0 20px 34.6px;
+                border-style: solid;
+                border-color: transparent transparent transparent $pink;
+                content: '';
+                transform: translate(-35%, -50%);
+                @at-root {
+                    .home .clock.pause .clock-btn::before {
+                        display: none;
+                    }
+                    .wrapper.break .home .clock .clock-btn::before {
+                        border-color: transparent transparent transparent $break;
+                    }
+                }
+            }
+            &::after {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                display: none;
+                width: 25px;
+                height: 35px;
+                border-right: calc(25px * .3) solid #fff;
+                border-left: calc(25px * .3) solid #fff;
+                content: '';
+                transform: translate(-50%, -50%);
+                @at-root {
+                    .home .clock.pause .clock-btn::after {
+                        display: block;
+                    }
+                }
+            }
+        }
+        &-reset {
+            position: absolute;
+            top: calc(50% + 34px);
+            left: calc(50% + 48px);
+            width: 14px;
+            height: 14px;
+            background-color: #fff;
+            @at-root {
+                .home .clock.pause .clock-reset {
+                    background-color: $pink;
+                }
+                .wrapper.break .home .clock.pause .clock-reset {
+                    background-color: $break;
+                }
+            }
+        }
+        &-time {
+            position: absolute;
+            top: 50%;
+            right: calc(100% + 26px);
+            color: $pink;
+            font-weight: bold;
+            font-size: 176px;
+            line-height: 206px;
+            transform: translateY(-50%);
+            @at-root {
+                .wrapper.break .home .clock-time {
+                    color: $break;
+                }
+            }
+        }
+    }
+    .nav {
+        position: absolute;
+        top: 48px;
+        right: 85px;
+        a {
+            display: block;
+            color: #fff;
+            & + a {
+                margin-top: 48px;
+            }
+        }
+        i {
+            font-size: 36px;
+        }
+    }
+    .slideText {
+        position: absolute;
+        right: 105px;
+        bottom: 48px;
+        color: #fff;
+        font-weight: bold;
+        font-size: 24px;
+        transform: rotate(90deg);
+        transform-origin: right bottom;
+    }
+}

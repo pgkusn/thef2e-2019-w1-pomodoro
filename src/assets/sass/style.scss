@@ -1,0 +1,48 @@
+@import 'common/variable';
+@import 'common/reset';
+@import 'views/home';
+@import 'views/tools';
+@import 'views/analytics';
+@import 'components/checkboxList';
+@import 'components/newMission';
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity .2s;
+}
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
+body {
+    background-color: $blue;
+}
+.wrapper {
+    margin: 0 auto;
+    width: 1280px;
+}
+.listTitle {
+    display: flex;
+    padding-right: 16px;
+    padding-left: 16px;
+    height: 44px;
+    background-color: rgba(#fff, .2);
+    color: #fff;
+    font-size: 24px;
+    justify-content: space-between;
+    align-items: center;
+    &.foldable::after {
+        width: 0;
+        height: 0;
+        border-width: 6.9px 4px 0 4px;
+        border-style: solid;
+        border-color: #fff transparent transparent transparent;
+        content: '';
+        @at-root {
+            .list-title.active::after {
+                border-width: 0 4px 6.9px 4px;
+                border-color: transparent transparent #fff transparent;
+            }
+        }
+    }
+}

@@ -1,0 +1,167 @@
+.tools {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    padding: 48px 85px 0 85px;
+    min-height: 100vh;
+    background-color: $blue;
+    .close {
+        position: absolute;
+        top: 48px;
+        right: 85px;
+        a {
+            display: block;
+            width: 48px;
+            height: 48px;
+            color: #fff;
+            text-align: center;
+        }
+        i {
+            font-size: 44px;
+            line-height: 48px;
+        }
+    }
+    .nav {
+        width: 476px;
+        a {
+            display: block;
+            color: rgba(#fff, .2);
+            font-weight: bold;
+            font-size: 44px;
+            &.router-link-exact-active {
+                color: $pink;
+                @at-root {
+                    .wrapper.break .tools .nav a.router-link-exact-active {
+                        color: $break;
+                    }
+                }
+            }
+            i {
+                margin-right: 8px;
+                vertical-align: middle;
+                font-size: 36px;
+            }
+            & + a {
+                margin-top: 42px;
+            }
+        }
+    }
+    .content {
+        width: 445px;
+    }
+    .clock {
+        position: absolute;
+        bottom: -175px;
+        left: 85px;
+        display: flex;
+        flex-direction: column;
+        padding-top: 58px;
+        padding-bottom: 175px;
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        background-color: #ffedf7;
+        align-items: center;
+        a {
+            position: absolute;
+            top: -58px;
+            left: 50%;
+            display: flex;
+            width: 116px;
+            height: 116px;
+            border-radius: 50%;
+            background-color: $blue;
+            transform: translateX(-50%);
+            justify-content: center;
+            align-items: center;
+            &::before {
+                width: 104px;
+                height: 104px;
+                border: 2px solid $pink;
+                border-radius: 50%;
+                background-color: $blue;
+                content: '';
+                @at-root {
+                    .wrapper.break .tools .clock a::before {
+                        border-color: $break;
+                    }
+                }
+            }
+        }
+        &-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            background-color: $pink;
+            transform: translate(-50%, -50%);
+            @at-root {
+                .wrapper.break .tools .clock-btn {
+                    background-color: $break;
+                }
+            }
+            &::before {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                border-width: 15px 0 15px 26.0px;
+                border-style: solid;
+                border-color: transparent transparent transparent #fff;
+                content: '';
+                transform: translate(-35%, -50%);
+                @at-root {
+                    .tools .clock.pause .clock-btn::before {
+                        display: none;
+                    }
+                }
+            }
+            &::after {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                display: none;
+                width: 20px;
+                height: 30px;
+                border-right: calc(20px * .3) solid #fff;
+                border-left: calc(20px * .3) solid #fff;
+                content: '';
+                transform: translate(-50%, -50%);
+                @at-root {
+                    .tools .clock.pause .clock-btn::after {
+                        display: block;
+                    }
+                }
+            }
+        }
+        &-time {
+            color: $pink;
+            font-weight: bold;
+            font-size: 64px;
+            line-height: 75px;
+            @at-root {
+                .wrapper.break .tools .clock-time {
+                    color: $break;
+                }
+            }
+        }
+        &-text {
+            color: $blue;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    }
+    .slideText {
+        position: absolute;
+        right: 105px;
+        bottom: 48px;
+        color: #fff;
+        font-weight: bold;
+        font-size: 24px;
+        transform: rotate(90deg);
+        transform-origin: right bottom;
+    }
+}
